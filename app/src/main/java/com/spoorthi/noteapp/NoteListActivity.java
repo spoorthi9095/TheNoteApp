@@ -1,10 +1,5 @@
 package com.spoorthi.noteapp;
 
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.databinding.DataBindingUtil;
-import androidx.lifecycle.Observer;
-import androidx.lifecycle.ViewModelProvider;
-
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
@@ -14,6 +9,11 @@ import android.view.View;
 import com.spoorthi.noteapp.databinding.ActivityNoteListBinding;
 
 import java.util.List;
+
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.databinding.DataBindingUtil;
+import androidx.lifecycle.Observer;
+import androidx.lifecycle.ViewModelProvider;
 
 public class NoteListActivity extends AppCompatActivity {
 
@@ -27,7 +27,7 @@ public class NoteListActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        binding = DataBindingUtil.setContentView(this,R.layout.activity_note_list);
+        binding = DataBindingUtil.setContentView(this, R.layout.activity_note_list);
 
         context = NoteListActivity.this;
 
@@ -37,9 +37,16 @@ public class NoteListActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
 
-                Intent intent = new Intent(context,AddNoteActivity.class);
+                Intent intent = new Intent(context, AddNoteActivity.class);
                 startActivity(intent);
 
+            }
+        });
+
+        noteViewModel.getNotesMLD().observe(this, new Observer<List<NoteBean>>() {
+            @Override
+            public void onChanged(List<NoteBean> noteBeans) {
+                Log.d(TAG, "onChanged: "+noteBeans);
             }
         });
 
