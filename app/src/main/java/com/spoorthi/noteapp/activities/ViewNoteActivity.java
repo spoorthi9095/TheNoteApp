@@ -38,6 +38,9 @@ public class ViewNoteActivity extends AppCompatActivity {
             binding.tvNoteTitle.setText(noteBean.getTitle());
             binding.tvNoteContent.setText(noteBean.getContent());
 
+            /*
+            * convert milli to required format
+            * */
             Calendar calendar = Calendar.getInstance();
             calendar.setTimeInMillis(noteBean.getTimeCreated());
             String time = NoteAppUtils.convertDateToString(calendar,"dd MMMM yyyy, hh:mm a");
