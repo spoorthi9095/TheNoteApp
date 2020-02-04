@@ -18,7 +18,8 @@
             android:name=".activities.AddNoteActivity"
             android:launchMode="singleTop"
             android:screenOrientation="portrait"
-            android:theme="@style/AppTheme.NoActionBar"/>
+            android:theme="@style/AppTheme.NoActionBar"
+            android:windowSoftInputMode="adjustResize"/>
         <activity
             android:name=".activities.NoteListActivity"
             android:screenOrientation="portrait">
