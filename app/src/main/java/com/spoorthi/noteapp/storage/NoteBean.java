@@ -5,6 +5,7 @@ import java.io.Serializable;
 import androidx.room.Entity;
 import androidx.room.PrimaryKey;
 
+//note bean class
 @Entity
 public class NoteBean implements Serializable {
 
