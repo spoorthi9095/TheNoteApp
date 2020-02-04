@@ -1,6 +1,9 @@
-package com.spoorthi.noteapp;
+package com.spoorthi.noteapp.viewmodel;
 
 import android.app.Application;
+
+import com.spoorthi.noteapp.storage.NoteBean;
+import com.spoorthi.noteapp.repo.NoteRepo;
 
 import java.util.List;
 

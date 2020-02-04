@@ -7,12 +7,25 @@
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        tools:context=".NoteListActivity">
+        tools:context=".activities.NoteListActivity"
+        android:background="#F7F8F9">
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/rv_notes"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"/>
+            android:layout_height="wrap_content"
+            android:padding="2dp"
+            android:clipToPadding="false"/>
+
+        <TextView
+            android:id="@+id/tv_empty"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="No notes added. Please click on + to add notes"
+            android:gravity="center"
+            android:layout_centerInParent="true"
+            android:visibility="gone"
+            android:textSize="12sp" />
 
         <com.google.android.material.floatingactionbutton.FloatingActionButton
             android:id="@+id/fab_add_note"

@@ -1,6 +1,7 @@
-package com.spoorthi.noteapp;
+package com.spoorthi.noteapp.activities;
 
 import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextUtils;
@@ -8,7 +9,11 @@ import android.text.TextWatcher;
 import android.view.View;
 
 import com.google.android.material.textfield.TextInputLayout;
+import com.spoorthi.noteapp.storage.NoteBean;
+import com.spoorthi.noteapp.repo.NoteRepo;
+import com.spoorthi.noteapp.R;
 import com.spoorthi.noteapp.databinding.ActivityAddNoteBinding;
+import com.spoorthi.noteapp.utils.AppConstants;
 
 import java.util.concurrent.Executors;
 
@@ -28,6 +33,15 @@ public class AddNoteActivity extends AppCompatActivity {
 
         context = AddNoteActivity.this;
 
+        binding.header.btnBack.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                onBackPressed();
+            }
+        });
+
+        binding.header.tvHeader.setText("Add Note");
+
         binding.btnSaveNote.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -45,6 +59,9 @@ public class AddNoteActivity extends AppCompatActivity {
                         public void run() {
                             NoteRepo noteRepo = new NoteRepo(getApplication());
                             noteRepo.insert(noteBean);
+                            Intent intent = new Intent(context,ViewNoteActivity.class);
+                            intent.putExtra(AppConstants.NOTE_KEY,noteBean);
+                            startActivity(intent);
                             finish();
                         }
                     });
@@ -157,5 +174,10 @@ public class AddNoteActivity extends AppCompatActivity {
         textInputLayout.clearFocus();
         textInputLayout.setError(null);
         textInputLayout.setErrorEnabled(false);
+    }
+
+    @Override
+    public boolean onSupportNavigateUp() {
+        return super.onSupportNavigateUp();
     }
 }

@@ -1,10 +1,12 @@
-package com.spoorthi.noteapp;
+package com.spoorthi.noteapp.storage;
+
+import java.io.Serializable;
 
 import androidx.room.Entity;
 import androidx.room.PrimaryKey;
 
 @Entity
-public class NoteBean {
+public class NoteBean implements Serializable {
 
     @PrimaryKey(autoGenerate = true)
     private int id;
