@@ -33,6 +33,7 @@ public class ViewNoteActivity extends AppCompatActivity {
             }
         });
 
+        /*Populating the note fields*/
         if(noteBean!=null){
             binding.tvNoteTitle.setText(noteBean.getTitle());
             binding.tvNoteContent.setText(noteBean.getContent());

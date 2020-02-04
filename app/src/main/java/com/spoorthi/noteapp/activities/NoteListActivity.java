@@ -40,13 +40,16 @@ public class NoteListActivity extends AppCompatActivity implements NoteAdapter.N
 
         context = NoteListActivity.this;
 
+        /*to get existing or new note when added*/
         noteViewModel = new ViewModelProvider(this).get(NoteViewModel.class);
 
+        /*initilizing recycler view and adapter*/
         RecyclerView.LayoutManager layoutManager = new GridLayoutManager(context,2);
         noteAdapter = new NoteAdapter(context,noteBeanList,this);
         binding.rvNotes.setLayoutManager(layoutManager);
         binding.rvNotes.setAdapter(noteAdapter);
 
+        /* Add note screen event */
         binding.fabAddNote.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -57,6 +60,7 @@ public class NoteListActivity extends AppCompatActivity implements NoteAdapter.N
             }
         });
 
+        /*An observer to update list when data changed*/
         noteViewModel.getNotesMLD().observe(this, new Observer<List<NoteBean>>() {
             @Override
             public void onChanged(List<NoteBean> noteBeans) {
@@ -72,6 +76,7 @@ public class NoteListActivity extends AppCompatActivity implements NoteAdapter.N
 
     }
 
+    /*handing note click event and redirecting to View Note page*/
     @Override
     public void OnNoteClick(int position) {
         Intent intent = new Intent(context,ViewNoteActivity.class);

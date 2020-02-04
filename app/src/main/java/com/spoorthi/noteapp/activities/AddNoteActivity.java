@@ -48,6 +48,9 @@ public class AddNoteActivity extends AppCompatActivity {
 
                 binding.btnSaveNote.setClickable(false);
 
+                /*
+                * On Validation true add to DB
+                * */
                 if(validateFields()){
                     final NoteBean noteBean = new NoteBean();
                     noteBean.setTitle(binding.tvTitle.getText().toString());
@@ -73,6 +76,7 @@ public class AddNoteActivity extends AppCompatActivity {
             }
         });
 
+        /*The following are various states to handle empty with focus change and empty text with text watcher*/
         binding.tvTitle.setOnFocusChangeListener(new View.OnFocusChangeListener() {
             @Override
             public void onFocusChange(View view, boolean b) {

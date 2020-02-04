@@ -34,6 +34,7 @@ public class NoteAdapter extends RecyclerView.Adapter<NoteAdapter.NoteViewHolder
 
     @Override
     public void onBindViewHolder(@NonNull NoteViewHolder holder, int position) {
+        /*populating each item*/
         NoteBean noteBean = noteBeanList.get(position);
         holder.title.setText(noteBean.getTitle());
         holder.content.setText(noteBean.getContent());
@@ -57,6 +58,7 @@ public class NoteAdapter extends RecyclerView.Adapter<NoteAdapter.NoteViewHolder
             title = itemView.findViewById(R.id.item_title);
             content = itemView.findViewById(R.id.item_content);
 
+            /**/
             itemView.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
@@ -66,6 +68,7 @@ public class NoteAdapter extends RecyclerView.Adapter<NoteAdapter.NoteViewHolder
         }
     }
 
+    /*interface to handle note click on list*/
     public interface NoteClick{
         void OnNoteClick(int position);
     }
